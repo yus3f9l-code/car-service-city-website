@@ -86,9 +86,9 @@
   }
   .hero-grid{
     display:grid;
-    grid-template-columns:1.4fr 1fr;
+    grid-template-columns:1.2fr 1fr;
     gap:48px;
-    align-items:end;
+    align-items:center;
   }
   .hero h1{
     font-size:clamp(2.2rem,5vw,3.4rem);
@@ -101,21 +101,85 @@
     color:#D9D3C6;
     font-size:1.05rem;
   }
-  .rating-block{
-    border-left:1px solid var(--line);
-    padding-left:32px;
+  .hero-media{
+    position:relative;
+    border:1px solid var(--line);
+  }
+  .hero-media img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+    display:block;
+    filter:saturate(0.9) contrast(1.05);
+  }
+  .rating-badge{
+    position:absolute;
+    left:0;
+    bottom:0;
+    background:var(--charcoal);
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:16px 22px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
   }
   .rating-num{
     font-family:'Oswald',sans-serif;
-    font-size:3.4rem;
+    font-size:2rem;
     font-weight:600;
     color:var(--amber);
     line-height:1;
   }
   .rating-sub{
-    margin-top:8px;
     color:var(--muted);
-    font-size:0.92rem;
+    font-size:0.82rem;
+    max-width:16ch;
+  }
+
+  /* ---- banner photo ---- */
+  .banner{
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .banner img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    filter:saturate(0.85) brightness(0.6);
+  }
+  .banner-caption{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+  }
+  .banner-caption p{
+    color:var(--paper);
+    font-family:'Oswald',sans-serif;
+    font-size:clamp(1.3rem,3vw,1.9rem);
+    font-weight:500;
+    max-width:18ch;
+    margin:0 0 0 24px;
+  }
+
+  /* ---- why us with image ---- */
+  .why-layout{
+    display:grid;
+    grid-template-columns:0.9fr 1.4fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .why-photo{
+    background:var(--charcoal);
+  }
+  .why-photo img{
+    width:100%;
+    height:100%;
+    min-height:280px;
+    object-fit:cover;
+    filter:saturate(0.9);
   }
   .hero-cta{
     margin-top:32px;
@@ -199,15 +263,14 @@
 
   /* ---- why us ---- */
   .why-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
+    display:flex;
+    flex-direction:column;
     gap:1px;
     background:var(--line);
-    border:1px solid var(--line);
   }
   .why-item{
     background:var(--charcoal);
-    padding:28px 26px;
+    padding:24px 26px;
   }
   .why-item h3{
     font-size:1rem;
@@ -311,9 +374,11 @@
   }
 
   @media (max-width:720px){
-    .hero-grid{grid-template-columns:1fr;gap:32px;}
-    .rating-block{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:24px;}
-    .why-grid{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;gap:24px;}
+    .hero-grid > div:first-child{order:2;}
+    .hero-media{order:1;}
+    .why-layout{grid-template-columns:1fr;}
+    .why-photo img{min-height:200px;}
     .info-grid{grid-template-columns:1fr;gap:40px;}
     .ticket{grid-template-columns:44px 1fr;}
     .ticket .ticket-meta{grid-column:2;text-align:left;padding-top:6px;}
@@ -341,9 +406,12 @@
         <a class="btn-outline" href="#services">See what we do</a>
       </div>
     </div>
-    <div class="rating-block">
-      <div class="rating-num">4.8</div>
-      <div class="rating-sub">out of 5, from 494 customer reviews on Google</div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1727893119356-1702fe921cf9?auto=format&fit=crop&w=1200&q=80" alt="A car parked in a service bay at the workshop">
+      <div class="rating-badge">
+        <span class="rating-num">4.8</span>
+        <span class="rating-sub">out of 5, 494 Google reviews</span>
+      </div>
     </div>
   </div>
 </section>
@@ -407,23 +475,35 @@
   </div>
 </section>
 
+<div class="banner">
+  <img src="https://images.unsplash.com/photo-1632733711679-529326f6db12?auto=format&fit=crop&w=1600&q=80" alt="A mechanic working on a car's engine at the workshop">
+  <div class="banner-caption">
+    <p>Every job gets explained before we touch the car.</p>
+  </div>
+</div>
+
 <section>
   <div class="wrap">
     <div class="section-head">
       <h2>Why people keep coming back</h2>
     </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <h3>They explain it in plain terms</h3>
-        <p>Before any work starts, you hear what's wrong, what it costs, and what can wait — no surprises on collection.</p>
+    <div class="why-layout">
+      <div class="why-photo">
+        <img src="https://images.unsplash.com/photo-1640682841767-cdfce3aea6e0?auto=format&fit=crop&w=800&q=80" alt="A toolbox full of wrenches at the workshop">
       </div>
-      <div class="why-item">
-        <h3>Fast without cutting corners</h3>
-        <p>Regulars mention the same thing: quick turnaround, and a team that clearly communicates with each other on the job.</p>
-      </div>
-      <div class="why-item">
-        <h3>The same faces, year after year</h3>
-        <p>Several customers have used this workshop for four years or more, coming back for every service since.</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>They explain it in plain terms</h3>
+          <p>Before any work starts, you hear what's wrong, what it costs, and what can wait — no surprises on collection.</p>
+        </div>
+        <div class="why-item">
+          <h3>Fast without cutting corners</h3>
+          <p>Regulars mention the same thing: quick turnaround, and a team that clearly communicates with each other on the job.</p>
+        </div>
+        <div class="why-item">
+          <h3>The same faces, year after year</h3>
+          <p>Several customers have used this workshop for four years or more, coming back for every service since.</p>
+        </div>
       </div>
     </div>
   </div>
