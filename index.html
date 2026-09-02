@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Service City — Loop Street, Cape Town</title>
+<meta name="description" content="Car Service City on Loop Street, Cape Town. Full vehicle servicing, repairs, and diagnostics. Rated 4.8 out of 5 by 494 customers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal: #1C1B19;
+    --panel: #24221F;
+    --paper: #F5F1E8;
+    --amber: #E8871E;
+    --muted: #948C80;
+    --line: #3D3A35;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--charcoal);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3,.jc-num{
+    font-family:'Oswald',sans-serif;
+    text-transform:none;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  :focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  /* ---- header ---- */
+  header{
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    background:rgba(28,27,25,0.94);
+    backdrop-filter:blur(6px);
+    z-index:10;
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 0;
+    gap:16px;
+  }
+  .brand{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    line-height:1.2;
+  }
+  .brand span{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:0.72rem;color:var(--muted);}
+  .call-btn{
+    background:var(--amber);
+    color:var(--charcoal);
+    font-weight:600;
+    padding:10px 18px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:0.9rem;
+    white-space:nowrap;
+  }
+
+  /* ---- hero ---- */
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    font-weight:600;
+    line-height:1.08;
+  }
+  .hero p.lede{
+    margin-top:20px;
+    max-width:46ch;
+    color:#D9D3C6;
+    font-size:1.05rem;
+  }
+  .rating-block{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+  }
+  .rating-num{
+    font-family:'Oswald',sans-serif;
+    font-size:3.4rem;
+    font-weight:600;
+    color:var(--amber);
+    line-height:1;
+  }
+  .rating-sub{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:0.92rem;
+  }
+  .hero-cta{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:var(--charcoal);
+    font-weight:600;
+    padding:13px 24px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:0.95rem;
+  }
+  .btn-outline{
+    border:1px solid var(--line);
+    color:var(--paper);
+    padding:13px 24px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:0.95rem;
+  }
+
+  /* ---- job ticket sections ---- */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:36px;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:1.7rem;
+    font-weight:600;
+  }
+  .section-tag{
+    color:var(--muted);
+    font-size:0.88rem;
+  }
+
+  .ticket-list{
+    border-top:1px solid var(--line);
+  }
+  .ticket{
+    display:grid;
+    grid-template-columns:64px 1fr auto;
+    gap:20px;
+    align-items:start;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .jc-num{
+    color:var(--amber);
+    font-size:1.1rem;
+    font-weight:600;
+  }
+  .ticket h3{
+    font-size:1.05rem;
+    font-weight:600;
+  }
+  .ticket p{
+    margin:6px 0 0;
+    color:#C9C2B4;
+    font-size:0.94rem;
+    max-width:52ch;
+  }
+  .ticket .ticket-meta{
+    color:var(--muted);
+    font-size:0.85rem;
+    text-align:right;
+    white-space:nowrap;
+    padding-top:2px;
+  }
+
+  /* ---- why us ---- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .why-item{
+    background:var(--charcoal);
+    padding:28px 26px;
+  }
+  .why-item h3{
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .why-item p{
+    margin:0;
+    color:#C9C2B4;
+    font-size:0.92rem;
+  }
+
+  /* ---- testimonials ---- */
+  .testi-strip{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .testi{
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr 140px;
+    gap:24px;
+    align-items:start;
+  }
+  .testi:first-child{border-top:1px solid var(--line);}
+  .testi p{
+    margin:0;
+    font-size:1rem;
+    color:#E8E3D8;
+  }
+  .testi .stars{
+    color:var(--amber);
+    font-size:0.85rem;
+    letter-spacing:0.15em;
+  }
+  .testi-name{
+    color:var(--muted);
+    font-size:0.85rem;
+    text-align:right;
+  }
+
+  /* ---- hours / location ---- */
+  .info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .hours-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.94rem;
+  }
+  .hours-row span:first-child{color:#C9C2B4;}
+  .hours-row.closed span:last-child{color:var(--muted);}
+  .info-block h3{
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  address{
+    font-style:normal;
+    color:#E8E3D8;
+    line-height:1.7;
+  }
+  .contact-line{
+    margin-top:18px;
+    font-size:1rem;
+  }
+  .contact-line a{
+    color:var(--amber);
+    text-decoration:none;
+    font-weight:600;
+  }
+
+  /* ---- final cta ---- */
+  .cta-final{
+    text-align:left;
+    border-bottom:none;
+  }
+  .cta-final h2{
+    font-size:2rem;
+    max-width:20ch;
+    margin-bottom:24px;
+  }
+
+  footer{
+    padding:32px 0 48px;
+    color:var(--muted);
+    font-size:0.85rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  @media (max-width:720px){
+    .hero-grid{grid-template-columns:1fr;gap:32px;}
+    .rating-block{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:24px;}
+    .why-grid{grid-template-columns:1fr;}
+    .info-grid{grid-template-columns:1fr;gap:40px;}
+    .ticket{grid-template-columns:44px 1fr;}
+    .ticket .ticket-meta{grid-column:2;text-align:left;padding-top:6px;}
+    .testi{grid-template-columns:1fr;}
+    .testi-name{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">Car Service City<span>Loop Street, Cape Town</span></div>
+    <a class="call-btn" href="tel:+27100096963">Call 010 009 6963</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Honest car service, done right the first time.</h1>
+      <p class="lede">A full-service workshop on Loop Street in the Cape Town City Centre — servicing, repairs, and diagnostics with the same team you can call back if something isn't right.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="tel:+27100096963">Book a service</a>
+        <a class="btn-outline" href="#services">See what we do</a>
+      </div>
+    </div>
+    <div class="rating-block">
+      <div class="rating-num">4.8</div>
+      <div class="rating-sub">out of 5, from 494 customer reviews on Google</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What we work on</h2>
+      <span class="section-tag">Book any of these by phone</span>
+    </div>
+    <div class="ticket-list">
+      <div class="ticket">
+        <span class="jc-num">01</span>
+        <div>
+          <h3>Full & interim services</h3>
+          <p>Oil, filters, fluids, and a full inspection so you know what's fine and what needs attention soon.</p>
+        </div>
+        <span class="ticket-meta">Most bookings</span>
+      </div>
+      <div class="ticket">
+        <span class="jc-num">02</span>
+        <div>
+          <h3>Brakes & suspension</h3>
+          <p>Pads, discs, shocks, and steering components — replaced or repaired with parts matched to your car.</p>
+        </div>
+        <span class="ticket-meta">Same-day, most cases</span>
+      </div>
+      <div class="ticket">
+        <span class="jc-num">03</span>
+        <div>
+          <h3>Diagnostics & fault finding</h3>
+          <p>Warning light on, strange noise, or a fault that comes and goes — we trace it before we quote it.</p>
+        </div>
+        <span class="ticket-meta">Computerised</span>
+      </div>
+      <div class="ticket">
+        <span class="jc-num">04</span>
+        <div>
+          <h3>Battery, cooling & electrical</h3>
+          <p>Battery testing and replacement, cooling system checks, and electrical faults sorted properly.</p>
+        </div>
+        <span class="ticket-meta">While you wait</span>
+      </div>
+      <div class="ticket">
+        <span class="jc-num">05</span>
+        <div>
+          <h3>Tyres & wheel alignment</h3>
+          <p>Fitting, balancing, and alignment, plus honest advice on when a tyre still has life left in it.</p>
+        </div>
+        <span class="ticket-meta">Walk-ins welcome</span>
+      </div>
+      <div class="ticket">
+        <span class="jc-num">06</span>
+        <div>
+          <h3>Pre-purchase & roadworthy checks</h3>
+          <p>Buying a car or need it certified? We check it properly and explain the results in plain terms.</p>
+        </div>
+        <span class="ticket-meta">Written report</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why people keep coming back</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>They explain it in plain terms</h3>
+        <p>Before any work starts, you hear what's wrong, what it costs, and what can wait — no surprises on collection.</p>
+      </div>
+      <div class="why-item">
+        <h3>Fast without cutting corners</h3>
+        <p>Regulars mention the same thing: quick turnaround, and a team that clearly communicates with each other on the job.</p>
+      </div>
+      <div class="why-item">
+        <h3>The same faces, year after year</h3>
+        <p>Several customers have used this workshop for four years or more, coming back for every service since.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>From recent customers</h2>
+      <span class="section-tag">Google reviews</span>
+    </div>
+    <div class="testi-strip">
+      <div class="testi">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>Serviced here three times now, and every visit has been excellent — professional, efficient, and always clear about what's being done.</p>
+        </div>
+        <div class="testi-name">Google review</div>
+      </div>
+      <div class="testi">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>Fast and attentive every time, with a team that clearly works well together. That's why this customer keeps coming back.</p>
+        </div>
+        <div class="testi-name">Google review</div>
+      </div>
+      <div class="testi">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>Four years of servicing and repairs here, always reliable, friendly, and professional — a rare thing to say about a mechanic.</p>
+        </div>
+        <div class="testi-name">Google review</div>
+      </div>
+      <div class="testi">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>Booked in over a busy Black Friday period and still left with wipers upgraded and the engine bay cleaned, at no extra charge.</p>
+        </div>
+        <div class="testi-name">Google review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap info-grid">
+    <div class="info-block">
+      <h3>Opening hours</h3>
+      <div class="hours-row"><span>Monday</span><span>7:00 AM – 5:30 PM</span></div>
+      <div class="hours-row"><span>Tuesday</span><span>7:00 AM – 5:30 PM</span></div>
+      <div class="hours-row"><span>Wednesday</span><span>7:00 AM – 5:30 PM</span></div>
+      <div class="hours-row"><span>Thursday</span><span>7:00 AM – 5:30 PM</span></div>
+      <div class="hours-row"><span>Friday</span><span>7:00 AM – 5:30 PM</span></div>
+      <div class="hours-row"><span>Saturday</span><span>8:00 AM – 1:00 PM</span></div>
+      <div class="hours-row closed"><span>Sunday</span><span>Closed</span></div>
+    </div>
+    <div class="info-block">
+      <h3>Find us</h3>
+      <address>
+        Car Service City — Loop Street<br>
+        49 Loop St, Cape Town City Centre<br>
+        Cape Town, 8000
+      </address>
+      <div class="contact-line">
+        <a href="tel:+27100096963">010 009 6963</a>
+      </div>
+      <div class="contact-line">
+        <a href="https://www.google.com/maps/place/Car+Service+City+-+Loop+Street,+49+Loop+St,+Cape+Town+City+Centre,+Cape+Town,+8000" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Got a car that needs looking at?</h2>
+    <div class="hero-cta">
+      <a class="btn-primary" href="tel:+27100096963">Call 010 009 6963</a>
+      <a class="btn-outline" href="https://www.google.com/maps/place/Car+Service+City+-+Loop+Street,+49+Loop+St,+Cape+Town+City+Centre,+Cape+Town,+8000" target="_blank" rel="noopener">View on Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px;">
+    <span>Car Service City — Loop Street, Cape Town</span>
+    <span>49 Loop St, Cape Town City Centre, 8000</span>
+  </div>
+</footer>
+
+</body>
+</html>
